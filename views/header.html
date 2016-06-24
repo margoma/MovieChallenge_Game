@@ -2,17 +2,17 @@
 <div class="col-md-4">
 	<h1 id="gameName">Guess the film</h1>
 	<div id="choose">
-		<input type="radio" name="genre" value="genre" ng-model="searchBy" ng-change="choose()">Genre
-		<input type="radio" name="actor" value="actor" ng-model="searchBy" ng-change="choose()">Actor/Director
+		<input type="radio" name="genre" value="genre" ng-model="searchBy">Genre
+		<input type="radio" name="actor" value="actor" ng-model="searchBy">Actor/Director
 	</div>
 </div>
 <div class="col-md-4 search">
-<div id="genre">
+<div id="genre" ng-if="searchBy=='genre'">
 	<label>Genre</label><br>
 	<select  ng-model="selectGenre" id="selectGenre" ng-options="genre.id as genre.name for genre in genres" ng-change="showFilmByGenre(selectGenre)">
 	</select>
 </div>
-<div id="actor" class="hidden">
+<div id="actor" ng-if="searchBy=='actor'">
 	<label>Actor/Director</label><br>
 	<input type="text" name="actor" ng-model="actor"><br>
 	<button ng-click="showFilmByActor(actor)">Click</button>

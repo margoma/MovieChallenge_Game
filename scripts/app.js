@@ -43,15 +43,8 @@ function shuffleArray(arrayFilms){
         	$scope.message=message;
         	$scope.modalTitle=title;
     	};
-		
 		$scope.newGame=function(){
 			window.location.reload();
-		};
-		$scope.choose=function(){
-			var genre=angular.element(document.getElementById('genre'));
-			var actor=angular.element(document.getElementById('actor'));
-				genre.toggleClass("hidden");
-				actor.toggleClass("hidden");
 		};
 		ApiRequestService.addGenres().then(function(data){//cuando obtengas los valores de la getGenres, me los guardas en $scope.genres
 			$scope.genres= data;
