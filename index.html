@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<title>Guess the film</title>
+		<link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+		<link rel="stylesheet" href="stylesheets/animate.css">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+		<link rel="stylesheet" href="stylesheets/myStylesheet.css">
+	</head>
+	<body class="container-fluid" ng-controller="IndexController">
+			<header class="row" ng-myHeader></header>
+			<div class="row" ng-bodygame></div>
+			<modal title="{{modalTitle}}" visible="showModal">
+				<p>{{message}}</p>
+				<p>You have {{counter}} lifes and {{coins}} points</p>
+  			</modal>
+			<div id="loading">
+ 				<img src="data/progress.gif" alt="Loading..." />
+			</div>
+		<script type="text/javascript" src="lib/angular.min.js"></script>
+		<script src="lib/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="lib/themoviedb.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
+		<script src="https://www.youtube.com/iframe_api"></script>
+		<script type="text/javascript" src="./scripts/directives.js"></script>
+		<script type="text/javascript" src="./scripts/services.js"></script>
+		<script type="text/javascript" src="scripts/app.js"></script>
+	</body>
+</html>

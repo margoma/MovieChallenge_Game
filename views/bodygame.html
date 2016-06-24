@@ -1,0 +1,27 @@
+<div class="col-md-10 hint">
+	<button id="btnHint" ng-click="showHint()" disabled="disabled">Hint</button>
+	<spam id="infoHint">{{tagline}}</spam>
+</div>
+<div id="counter" class="col-md-2">
+	<spam><i class="glyphicon glyphicon-heart" aria-hidden="true"></i>{{counter}}</spam>
+	<spam><img src="../data/film.png">{{coins}}</spam>
+</div>
+<div class="col-md-12 video">
+	<div  id="imageClick" class="hidden" >
+		<img id="thumb" src="./data/frame1.jpg" alt="" ng-click="playVideo()"/>
+	</div>
+	<div id="trailer" class="hidden" >
+		<div id="player"></div>
+	</div>
+	<div id="imageEnd" class="hidden">
+		<img src="./data/end.jpg" alt="" />
+	</div>
+	<div id="titlesList">
+		<ul class="list-inline">
+			<li ng-repeat="film in threeFilms">
+				<button  id={{film.id}} ng-click="checkAnswer(film.id,film.original_title)"> {{film.original_title}}</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
