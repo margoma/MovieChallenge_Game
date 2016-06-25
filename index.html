@@ -9,16 +9,12 @@
 		<link rel="stylesheet" href="stylesheets/myStylesheet.css">
 	</head>
 	<body class="container-fluid" ng-controller="IndexController">
-			<header class="row" ng-myHeader></header>
-			<div class="row" ng-bodygame></div>
-			<modal title="{{modalTitle}}" visible="showModal">
-				<p>{{message}}</p>
-				<p>You have {{counter}} lifes and {{coins}} points</p>
-  			</modal>
+			<ng-view></ng-view>
 			<div id="loading">
  				<img src="data/progress.gif" alt="Loading..." />
 			</div>
 		<script type="text/javascript" src="lib/angular.min.js"></script>
+		<script type="text/javascript" src="lib/angular-route.min.js"></script>
 		<script src="lib/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="lib/themoviedb.min.js"></script>
 		<script src="lib/bootstrap.min.js"></script>

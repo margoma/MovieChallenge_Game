@@ -29,26 +29,40 @@ function shuffleArray(arrayFilms){
 };
 
 (function(){
-	var app= angular.module("myApp", ["myApp.services", "myApp.directives"]);
+	var app= angular.module("myApp", ["myApp.services", "myApp.directives",'ngRoute']);
+	app.config(function($routeProvider) {
+        $routeProvider
+            // route for the home page
+            .when('/', {
+                templateUrl : 'views/home.html',
+                controller: 'IndexController'
+            })
+
+            // route for the game page
+            .when('/game', {
+                templateUrl : 'views/guess.html',
+                controller: 'IndexController'
+            })
+    });
 	app.controller("IndexController", ['$scope' ,'ApiRequestService', function ($scope, ApiRequestService){ 
 		$(window).load(function() {
      		$('#loading').hide();
   		});
-		$scope.searchBy="genre";
-		$scope.counter=1;
-		$scope.coins=0;
 		$scope.showModal = false;
 		var toggleModal = function(message, title){
         	$scope.showModal = !$scope.showModal;
         	$scope.message=message;
         	$scope.modalTitle=title;
     	};
-		$scope.newGame=function(){
-			window.location.reload();
-		};
+    	$scope.searchBy="genre";
+    	$scope.counter=1;
+		$scope.coins=0;
 		ApiRequestService.addGenres().then(function(data){//cuando obtengas los valores de la getGenres, me los guardas en $scope.genres
 			$scope.genres= data;
 		});
+		$scope.reload= function(){
+			window.location.reload();
+		}
 		$scope.showFilmByGenre= function(selectGenre){
 			var hintButton=angular.element(document.getElementById('btnHint'));
 			var hintText=angular.element(document.getElementById('infoHint'));
@@ -177,6 +191,7 @@ function shuffleArray(arrayFilms){
 				}
 			},100);
 		}
+
 	}]);
 
 

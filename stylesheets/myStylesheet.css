@@ -45,8 +45,6 @@ body {
     cursor: pointer; }
   body .video {
     text-align: center; }
-    body .video #trailer iframe {
-      border: 5px solid #142644; }
     body .video #titlesList {
       text-align: center;
       width: 866px;
