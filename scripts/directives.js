@@ -46,9 +46,16 @@ function modalDirective() {
     	}
     }	
 };
+ function footerDirective(){
+  return{
+    restrict:'A',
+    templateUrl:'views/footer.html'
+  }
+};
 	(function(){
 	var dir=angular.module('myApp.directives',[])
 	dir.directive("ngMyheader",headerDirective);
 	dir.directive("ngBodygame",bodyGameDirective);
 	dir.directive("modal",modalDirective);
+  dir.directive("ngFooter",footerDirective);
 })();

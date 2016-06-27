@@ -16,11 +16,6 @@ var app= angular.module("myApp.services", []);
 			function (response) {
 				var resp=JSON.parse(response);
     			genres=resp.genres;
-    			/*for (var i = genres.length - 1; i >= 0; i--) {
-    				if(genres[i].name==="Documentary"){
-    					genres.splice(i, 1);
-    				}
-    			}*/
    				deferred.resolve(genres)
 			},error);
 			return deferred.promise;
@@ -38,6 +33,10 @@ var app= angular.module("myApp.services", []);
 		};
 		var getSelectedMovie=function(filmsArray){
 			var deferred = $q.defer();
+			if(filmsArray.length==0){
+				deferred.resolve(undefined)
+			}
+			else{
 			var randomElement=Math.floor((Math.random()* filmsArray.length) + 0);
 		 	var filmId=filmsArray[randomElement].id;
 		 	theMovieDb.movies.getTrailers({"id":filmId}, function (response) {
@@ -55,6 +54,7 @@ var app= angular.module("myApp.services", []);
 			 	}
 			 	
 			 },error)
+		 	}
 			 return deferred.promise;
 		}
 		var getFilmInfo= function(filmId){
@@ -112,7 +112,9 @@ var app= angular.module("myApp.services", []);
 	        				var hintButton=angular.element(document.getElementById('btnHint'));
 	        				imageEnd.removeClass("hidden");
 	        				iframe.addClass("hidden");
-	        				hintButton.removeAttr("disabled");
+	        				if(!angular.element(document.getElementsByClassName('correctButton'))[0]){
+	        					hintButton.removeAttr("disabled");
+	        				}
 	        			}
 	    			}
 	    		}

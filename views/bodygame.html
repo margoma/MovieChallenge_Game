@@ -1,27 +1,64 @@
-<div class="col-md-10 hint">
-	<button id="btnHint" ng-click="showHint()" disabled="disabled">Hint</button>
-	<spam id="infoHint">{{tagline}}</spam>
+
+<div id="leftSide" class="col-md-2">
+	<ul class="list-unstyled">
+		<li class="newGame">
+			<button ng-click="reload()">Restart</button>
+		</li>
+		<li id="choose">
+			<div>
+				<input ng-class="{checked: isChecked == genre}" type="radio" name="genre" value="genre" ng-model="searchBy">&nbsp;
+				<label >Genre</label>
+				<div class="check"></div>
+			</div>
+			<div>
+				<input ng-class="{checked: isChecked == actor}" type="radio" name="actor" value="actor" ng-model="searchBy">&nbsp;
+				<label >Actor/Director</label>
+				<div class="check"></div>
+			</div>
+		</li>
+		<li class="search">
+			<div id="genre" ng-if="searchBy=='genre'">
+				<label>Choose Genre:</label><br>
+				<select ng-model="selectGenre"  id="selectGenre" ng-options="genre.id as genre.name for genre in genres" ng-change="showFilmByGenre(selectGenre)">
+				</select>
+			</div>
+			<div id="actor" ng-if="searchBy=='actor'">
+				<label>Actor/Director:</label><br>
+				<input type="text" name="actor" ng-model="actor" ng-keyup="$event.keyCode == 13 && showFilmByActor(actor)"><br>
+			</div>
+		</li>
+
+		
+	</ul>
+</div>
+<div class="col-md-8">
+	<div class="hint">
+		<button id="btnHint" ng-click="showHint()" disabled="disabled">Hint</button>
+		<spam id="infoHint">{{tagline}}</spam>
+	</div>
+	<div class="video">
+		<div  id="imageClick" class="hidden" >
+			<img id="thumb" src="./data/frame1.png" alt="" ng-click="playVideo()"/>
+		</div>
+		<div id="trailer" class="hidden" >
+			<div id="player"></div>
+		</div>
+		<div id="imageEnd" class="hidden">
+			<img src="./data/end.png" alt="" />
+		</div>
+		<div id="titlesList">
+			<ul class="list-inline">
+				<li ng-repeat="film in threeFilms">
+					<button  id={{film.id}} ng-click="checkAnswer(film.id,film.original_title)"> {{film.original_title}}</button>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
 <div id="counter" class="col-md-2">
 	<spam><i class="glyphicon glyphicon-heart" aria-hidden="true"></i>{{counter}}</spam>
-	<spam><img src="../data/film.png">{{coins}}</spam>
+	<spam><img src="../data/film2.png">{{coins}}</spam>
 </div>
-<div class="col-md-12 video">
-	<div  id="imageClick" class="hidden" >
-		<img id="thumb" src="./data/frame1.jpg" alt="" ng-click="playVideo()"/>
-	</div>
-	<div id="trailer" class="hidden" >
-		<div id="player"></div>
-	</div>
-	<div id="imageEnd" class="hidden">
-		<img src="./data/end.jpg" alt="" />
-	</div>
-	<div id="titlesList">
-		<ul class="list-inline">
-			<li ng-repeat="film in threeFilms">
-				<button  id={{film.id}} ng-click="checkAnswer(film.id,film.original_title)"> {{film.original_title}}</button>
-			</li>
-		</ul>
-	</div>
-</div>
+
+
 

@@ -30,7 +30,7 @@ function shuffleArray(arrayFilms){
 
 (function(){
 	var app= angular.module("myApp", ["myApp.services", "myApp.directives",'ngRoute']);
-	app.config(function($routeProvider) {
+	app.config(function( $routeProvider) {
         $routeProvider
             // route for the home page
             .when('/', {
@@ -96,7 +96,13 @@ function shuffleArray(arrayFilms){
 				}else{
 					$scope.threeFilms=data;
 					ApiRequestService.getSelectedMovie($scope.threeFilms).then(function(data){
-	 					showTrailer(data, ApiRequestService);
+						if(!data){
+							contentModal.addClass("modalFail");
+							contentModal.removeClass("modalCorrect");
+							toggleModal(actor +" not found, try with another", "Ups!");
+						}else{
+	 						showTrailer(data, ApiRequestService);
+	 					}
 	 				});
 				}
 			});
@@ -119,6 +125,7 @@ function shuffleArray(arrayFilms){
 			var correctFilm= angular.element(document.getElementsByTagName("iframe")).attr("data-id");
 			var button=angular.element(document.getElementById(correctFilm));
 			var contentModal=angular.element(document.getElementsByClassName('modal-content'));
+			var hintButton=angular.element(document.getElementById('btnHint'));
 			if($scope.coins>0){
 				$scope.coins--;
 			}
@@ -129,10 +136,11 @@ function shuffleArray(arrayFilms){
 					$scope.tagline=data
 				});
 				hintText.removeClass("hidden");
+				hintButton.attr("disabled", "disabled");
 			}else{
 				contentModal.addClass("modalFail");
 				contentModal.removeClass("modalCorrect");
-				toggleModal("Sorry, not more life", "Game Over!");
+				toggleModal("Sorry, not more life, you've lost the game", "Game Over!");
 				button.addClass("correctButton");
 				console.log("game over")
 
@@ -148,6 +156,8 @@ function shuffleArray(arrayFilms){
 			var hintText=angular.element(document.getElementById('infoHint'));
 			var hintButton=angular.element(document.getElementById('btnHint'));
 			var contentModal=angular.element(document.getElementsByClassName('modal-content'));
+			var titlesList=angular.element(document.getElementById("titlesList"));
+			var buttons=angular.element(titlesList[0].getElementsByTagName("button"))
 			player.pauseVideo();
 			setTimeout(function(){
 				if(filmId==correctFilm){
@@ -164,9 +174,9 @@ function shuffleArray(arrayFilms){
 					};
 					hintText.addClass("hidden");
 					hintButton.attr("disabled", "disabled");
-					thevid.addClass("hidden"); 
-					titles.addClass("hidden");
-					imageEnd.addClass("hidden");
+					buttons.attr("disabled", "disabled");
+					button.addClass("correctButton");
+
 				}else{
 					if($scope.counter>0){
 						if($scope.coins>0){
@@ -174,17 +184,15 @@ function shuffleArray(arrayFilms){
 						};
 						contentModal.addClass("modalFail");
 						contentModal.removeClass("modalCorrect");
-						toggleModal("Sorry," + title + " is not the correct film", "Ups!");
+						toggleModal("Sorry, " + title + " is not the correct film", "Ups!");
 						$scope.counter--;
 						$scope.$apply();
-						var titlesList=angular.element(document.getElementById("titlesList"));
-						var buttons=angular.element(titlesList[0].getElementsByTagName("button"))
 						buttons.attr("disabled", "disabled");
 						button.addClass("correctButton");
 					}else{
 						contentModal.addClass("modalFail");
 						contentModal.removeClass("modalCorrect");
-						toggleModal("Sorry," + title + " is not the correct film", "Game Over!");
+						toggleModal("Sorry, not more life, you've lost the game", "Game Over!");
 						$scope.$apply();
 						button.addClass("correctButton");
 					}

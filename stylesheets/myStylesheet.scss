@@ -1,60 +1,102 @@
 $inputheight: 30px;
 $greenlight:#62d2b0;
-$grey:#a8a1a5;
 $orange:#e85f29;
 $blue:#142644;
 $green:#0b5850;
-@mixin buttons {
-	background-color:$green;
-	color:white;
+#home{
+	position: absolute;
+   	top: 50%;
+   	left: 50%;
+   	width: 500px;
+   	height: 500px;
+   	margin-top: -250px;
+   	margin-left: -250px;
+	a{
+ 		width: 425px;
+ 		height:425px;
+ 		display:block;
+		background: url('../data/moviechallenge.gif') center center no-repeat;
+		&:hover {
+   			background-image: url('../data/moviechallenge2.png');
+		}
 	}
-
+}
 body{
-	font-family: "lato";
-	color:$blue;
-	background-color:$grey;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	//font-family: "lato";
+	color:white;
+	background-color:$blue;
 	header{
-		background-color: $orange;
-		background-size:100% 100%;
-		height:110px;
+		display: block;
 		#gameName{
+			margin-left:120px;
 			font-weight:700;
 			text-align:left;
 		}
-		#choose{
-			font-weight: bold;
-			text-align:left;
-			margin-bottom:5px;
+		.logo{
+			position: absolute;
 		}
-		.search{
-			padding: 10px;
-			text-align:center;
+	}
+	.bodyGame{ 
+   		background:url(../data/cine2.png) center bottom no-repeat;
+   		background-size: 100% 100%;
+	}
+	#leftSide{
+		color:white;
+		font-weight: bold;
+		text-align:left;
+		padding:30px;
+		li{
+			margin-top:25px;
+		}
+		#choose{
+			width:152px;
+			input{
+				margin-top:10px;
+				cursor: pointer;
+				&:hover {
+					border-bottom: 1px solid $orange;
+				}
+				&:checked ~ label{
+					color: $orange;
+				}
+			}
 		}
 		.newGame{
-			text-align:right;
-			margin-top:60px;
+			&:hover{
+				color:$orange;
+				border-bottom: 1px solid $orange;
+			}
+
 		}
-		input{
+
+		input[type=text]{
 			height:$inputheight;
-			background-color:$grey;
+			background-color:transparent;
+			border:1px solid white;
+			color:$orange;
+
 		}
 		select{
 			height:$inputheight;
-			background-color:$grey;
+			background-color:$blue;
+			border:1px solid white;
+			width:152px;
+			color:$orange;
+			cursor: pointer;
 		}
 		button{
-			@include buttons;
-			height:$inputheight;
-			width: 100px;
-			margin-top: 5px;
+			text-align:left;
+			border:none;
+			background-color:transparent;
 		}
-
 	}
+	
 	
 	#counter{
 		font-size:24px;
-		text-align:right;
-		margin-top:10px;
+		text-align: right;
+		padding-right:55px;
 		.glyphicon{
 			color:$orange;
 			margin-right:5px;
@@ -65,19 +107,46 @@ body{
 			margin-top:-5px;
 		}
 	}
-	#thumb{
-		cursor: pointer;
-	}
-	.video{
-		text-align:center;
-		#trailer{
-			
-
+	.hint{
+		#infoHint{
+			font-size: 20px;
+			margin-left:70px;
 		}
+		button{
+			padding-top:5px;
+			padding-bottom:5px;
+			margin:12px 0px;
+			background-color:transparent;
+			border:1px solid $orange;
+			width: 80px;
+			font-weight: bold;
+			color:$orange;
+			&:disabled{
+				color:white;
+				border: none;
+			}
+		}
+	}
 
+	.video{
+		height:538px;
+		width:100%;
+		text-align:center;
+		#thumb{
+		cursor: pointer;
+		width:100%;
+		}
+		#imageEnd{
+			img{
+				width:100%;
+			}
+		}
+		iframe{
+			width:100%;
+		}
 		#titlesList{	
 			text-align:center;
-			width:866px;
+			width:100%;
 			margin-left: auto ;
 			margin-right: auto ;
 			li{
@@ -88,27 +157,15 @@ body{
 				padding-bottom:5px;
 				width:100%;
 				margin:12px 0px;
-				@include buttons;
+				background-color:black;
+				color:white;
 			}
 		}
 	}
-	.hint{
-		#infoHint{
-			text-align:center;
-			font-size: 20px;
-			font-weight: bold;
-		}
-		button{
-			padding-top:5px;
-			padding-bottom:5px;
-			margin:12px 0px;
-			@include buttons;
-			width: 80px;
-		}
-	}
+	
 	.correctButton{
-		border: 5px solid $orange;
-		background-color:$orange!important;
+		border: 5px solid $greenlight;
+		color:$greenlight!important;
 	}
 
 	.modalFail{
@@ -126,7 +183,7 @@ body{
 	   left: 0px;
 	   position: fixed;
 	   display: block;
-	   background-color: $grey;
+	   background-color: $blue;
 	   z-index: 99;
 	   text-align: center;
 
@@ -138,5 +195,10 @@ body{
   			left: 43%;
   			z-index: 100;
 		}
+	}
+	footer{
+		text-align:right;
+		padding-top:4px;
+		padding-right:15px;
 	}
 }
