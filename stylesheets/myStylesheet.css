@@ -50,6 +50,7 @@ body {
       border-bottom: 1px solid #e85f29; }
     body #leftSide input[type=text] {
       height: 30px;
+      width: 152px;
       background-color: transparent;
       border: 1px solid white;
       color: #e85f29; }

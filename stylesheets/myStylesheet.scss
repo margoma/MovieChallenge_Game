@@ -23,7 +23,6 @@ $green:#0b5850;
 }
 body{
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	//font-family: "lato";
 	color:white;
 	background-color:$blue;
 	header{
@@ -72,6 +71,7 @@ body{
 
 		input[type=text]{
 			height:$inputheight;
+			width:152px;
 			background-color:transparent;
 			border:1px solid white;
 			color:$orange;

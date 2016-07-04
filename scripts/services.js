@@ -99,7 +99,7 @@ var app= angular.module("myApp.services", []);
 		 	player = new YT.Player("player", {
 	    		height: '480',
 	    		width: '854',
-	    		playerVars: {start:20, end:30, modestbranding:1, autohide:0, showinfo:0, controls:0},
+	    		playerVars: {start:24, end:31, modestbranding:1, autohide:0, showinfo:0, controls:0},
 	    		videoId: source,
 	    		events: {
 	        		'onReady': function(event){

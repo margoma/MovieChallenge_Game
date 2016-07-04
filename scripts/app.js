@@ -126,9 +126,6 @@ function shuffleArray(arrayFilms){
 			var button=angular.element(document.getElementById(correctFilm));
 			var contentModal=angular.element(document.getElementsByClassName('modal-content'));
 			var hintButton=angular.element(document.getElementById('btnHint'));
-			if($scope.coins>0){
-				$scope.coins--;
-			}
 			if ($scope.counter>0){
 				$scope.counter--;
 				var filmId= angular.element(document.getElementsByTagName("iframe")).attr("data-id")
