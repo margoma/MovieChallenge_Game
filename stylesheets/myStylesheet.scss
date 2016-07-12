@@ -3,6 +3,31 @@ $greenlight:#62d2b0;
 $orange:#e85f29;
 $blue:#142644;
 $green:#0b5850;
+@media (max-width: 768px) {
+    .list-xs {
+    	margin:0px!important;
+    	width:32%;
+        display: inline-block;
+    }
+    .list-xs-padding{
+    	padding-right:0px!important;
+    	padding-top:0px !important;
+    	padding-bottom:0px !important;
+    }
+    .footer-xs{
+			width:5%;
+			height:5%;
+
+			}
+
+}
+@media (min-width: 769px) {
+    .bodyGame{ 
+   		background:url(../data/cine1.png) center no-repeat;
+   		background-size: contain;
+	}
+
+}
 #home{
 	position: absolute;
    	top: 50%;
@@ -26,20 +51,17 @@ body{
 	color:white;
 	background-color:$blue;
 	header{
-		display: block;
+		//display: block;
 		#gameName{
-			margin-left:120px;
 			font-weight:700;
 			text-align:left;
+			font-size:2.25em;
 		}
 		.logo{
-			position: absolute;
+			cursor: pointer;
 		}
 	}
-	.bodyGame{ 
-   		background:url(../data/cine2.png) center bottom no-repeat;
-   		background-size: 100% 100%;
-	}
+	
 	#leftSide{
 		color:white;
 		font-weight: bold;
@@ -48,25 +70,16 @@ body{
 		li{
 			margin-top:25px;
 		}
-		#choose{
-			width:152px;
+		.choose{
+
 			input{
 				margin-top:10px;
 				cursor: pointer;
-				&:hover {
-					border-bottom: 1px solid $orange;
-				}
+
 				&:checked ~ label{
 					color: $orange;
 				}
 			}
-		}
-		.newGame{
-			&:hover{
-				color:$orange;
-				border-bottom: 1px solid $orange;
-			}
-
 		}
 
 		input[type=text]{
@@ -151,6 +164,7 @@ body{
 			margin-right: auto ;
 			li{
 				width:33%;
+				margin-bottom:5px;
 			}
 			button{
 				padding-top:5px;
@@ -197,8 +211,17 @@ body{
 		}
 	}
 	footer{
-		text-align:right;
-		padding-top:4px;
-		padding-right:15px;
+		p{
+			text-align:center;
+
+		}
+		a{
+			text-align:right;
+		img{
+			width:3%;
+			height:3%;
+
+			}
+		}
 	}
 }

@@ -1,3 +1,21 @@
+@media (max-width: 768px) {
+  .list-xs {
+    margin: 0px !important;
+    width: 32%;
+    display: inline-block; }
+
+  .list-xs-padding {
+    padding-right: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important; }
+
+  .footer-xs {
+    width: 5%;
+    height: 5%; } }
+@media (min-width: 769px) {
+  .bodyGame {
+    background: url(../data/cine1.png) center no-repeat;
+    background-size: contain; } }
 #home {
   position: absolute;
   top: 50%;
@@ -18,17 +36,12 @@ body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   color: white;
   background-color: #142644; }
-  body header {
-    display: block; }
-    body header #gameName {
-      margin-left: 120px;
-      font-weight: 700;
-      text-align: left; }
-    body header .logo {
-      position: absolute; }
-  body .bodyGame {
-    background: url(../data/cine2.png) center bottom no-repeat;
-    background-size: 100% 100%; }
+  body header #gameName {
+    font-weight: 700;
+    text-align: left;
+    font-size: 2.25em; }
+  body header .logo {
+    cursor: pointer; }
   body #leftSide {
     color: white;
     font-weight: bold;
@@ -36,18 +49,11 @@ body {
     padding: 30px; }
     body #leftSide li {
       margin-top: 25px; }
-    body #leftSide #choose {
-      width: 152px; }
-      body #leftSide #choose input {
-        margin-top: 10px;
-        cursor: pointer; }
-        body #leftSide #choose input:hover {
-          border-bottom: 1px solid #e85f29; }
-        body #leftSide #choose input:checked ~ label {
-          color: #e85f29; }
-    body #leftSide .newGame:hover {
-      color: #e85f29;
-      border-bottom: 1px solid #e85f29; }
+    body #leftSide .choose input {
+      margin-top: 10px;
+      cursor: pointer; }
+      body #leftSide .choose input:checked ~ label {
+        color: #e85f29; }
     body #leftSide input[type=text] {
       height: 30px;
       width: 152px;
@@ -107,7 +113,8 @@ body {
       margin-left: auto;
       margin-right: auto; }
       body .video #titlesList li {
-        width: 33%; }
+        width: 33%;
+        margin-bottom: 5px; }
       body .video #titlesList button {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -141,9 +148,12 @@ body {
       top: 200px;
       left: 43%;
       z-index: 100; }
-  body footer {
-    text-align: right;
-    padding-top: 4px;
-    padding-right: 15px; }
+  body footer p {
+    text-align: center; }
+  body footer a {
+    text-align: right; }
+    body footer a img {
+      width: 3%;
+      height: 3%; }
 
 /*# sourceMappingURL=myStylesheet.css.map */

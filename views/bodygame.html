@@ -1,22 +1,17 @@
 
-<div id="leftSide" class="col-md-2">
-	<ul class="list-unstyled">
-		<li class="newGame">
-			<button ng-click="reload()">Restart</button>
-		</li>
-		<li id="choose">
-			<div>
-				<input ng-class="{checked: isChecked == genre}" type="radio" name="genre" value="genre" ng-model="searchBy">
+<div id="leftSide" class="col-md-2 col-xs-12 list-xs-padding">
+	<ul class="list-unstyled ">
+		<li class="list-xs choose">
+			<input ng-class="{checked: isChecked == genre}" type="radio" name="genre" value="genre" ng-model="searchBy">
 				<label >Genre</label>
 				<div class="check"></div>
-			</div>
-			<div>
+		</li>
+		<li  class="list-xs choose">
 				<input ng-class="{checked: isChecked == actor}" type="radio" name="actor" value="actor" ng-model="searchBy">
 				<label >Actor/Director</label>
 				<div class="check"></div>
-			</div>
 		</li>
-		<li class="search">
+		<li class="search list-xs">
 			<div id="genre" ng-if="searchBy=='genre'">
 				<label>Choose Genre:</label><br>
 				<select ng-model="selectGenre"  id="selectGenre" ng-options="genre.id as genre.name for genre in genres" ng-change="showFilmByGenre(selectGenre)">
@@ -31,7 +26,7 @@
 		
 	</ul>
 </div>
-<div class="col-md-8">
+<div class="col-md-8 col-xs-12">
 	<div class="hint">
 		<button id="btnHint" ng-click="showHint()" disabled="disabled">Hint</button>
 		<spam id="infoHint">{{tagline}}</spam>
@@ -55,7 +50,7 @@
 		</div>
 	</div>
 </div>
-<div id="counter" class="col-md-2">
+<div id="counter" class="col-md-2 col-xs-12">
 	<spam><i class="glyphicon glyphicon-heart" aria-hidden="true"></i>{{counter}}</spam>
 	<spam><img src="./data/film2.png">{{coins}}</spam>
 </div>
