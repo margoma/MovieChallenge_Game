@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 	<head>
-
 		<meta charset="utf-8">
 		<title>Guess the film</title>
 		<link rel="stylesheet" href="stylesheets/bootstrap.min.css">
@@ -11,8 +10,8 @@
 	<body class="container-fluid" ng-controller="IndexController">
 			<ng-view></ng-view>
 			<footer class="row" ng-footer></footer>
-			<div id="loading">
- 				<img src="data/progress.gif" alt="Loading..." />
+			<div id="loading" class="row">
+ 				<img src="data/progress.gif" class="center-block" alt="Loading..." />
 			</div>
 		<script type="text/javascript" src="lib/angular.min.js"></script>
 		<script type="text/javascript" src="lib/angular-route.min.js"></script>

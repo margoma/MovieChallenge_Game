@@ -55,6 +55,7 @@ function shuffleArray(arrayFilms){
         	$scope.modalTitle=title;
     	};
     	$scope.searchBy="genre";
+    	var life=0;
     	$scope.counter=1;
 		$scope.coins=0;
 		ApiRequestService.addGenres().then(function(data){//cuando obtengas los valores de la getGenres, me los guardas en $scope.genres
@@ -164,7 +165,9 @@ function shuffleArray(arrayFilms){
 					contentModal.removeClass("modalFail");
 					toggleModal("Correct, the film is " + title, "Yujuuu!");
 					$scope.$apply();
-					if($scope.counter<3){
+					life++
+					console.log(life);
+					if( life%5==0 && $scope.counter<3){
 						$scope.counter++;
 						//para k se actualice la variable scope (counter en este caso)
 						//player.seekTo( player.getDuration(), true );//put state ENDED
@@ -176,14 +179,17 @@ function shuffleArray(arrayFilms){
 
 				}else{
 					if($scope.counter>0){
-						if($scope.coins>0){
+						if($scope.coins<=0){
+							$scope.counter--;
+						}
+						else{
 							$scope.coins--;
 						};
 						contentModal.addClass("modalFail");
 						contentModal.removeClass("modalCorrect");
 						toggleModal("Sorry, " + title + " is not the correct film", "Ups!");
-						$scope.counter--;
 						$scope.$apply();
+						console.log("")
 						buttons.attr("disabled", "disabled");
 						button.addClass("correctButton");
 					}else{
